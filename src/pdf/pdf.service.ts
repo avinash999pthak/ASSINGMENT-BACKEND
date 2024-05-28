@@ -2,18 +2,16 @@ import { Injectable } from '@nestjs/common';
 import * as pdfMake from 'pdfmake/build/pdfmake';
 import * as pdfFonts from 'pdfmake/build/vfs_fonts';
 import * as mysql from 'mysql';
+import { MessageService } from 'src/message/message.service';
+
 
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 @Injectable()
 
 export class PdfService {
-  private readonly pool = mysql.createPool({
-    host: 'localhost',
-    user: 'root',
-    password: 'root',
-    database: 'e-commerce',
-  });
+  constructor(private message :MessageService){}
+  private readonly pool = this.message.pool
   async generatePdf(): Promise<Buffer> {
     try {
       // Assuming you have a method named `getdata()` to asynchronously fetch data
