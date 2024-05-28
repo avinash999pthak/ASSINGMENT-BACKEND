@@ -3,6 +3,7 @@ import { Response } from 'express';
 import { PdfService } from './pdf.service';
 import { createReadStream } from 'fs';
 import { join } from 'path';
+import { MessageService } from '../message/message.service';
 
 @Controller('pdf')
 export class PdfController {

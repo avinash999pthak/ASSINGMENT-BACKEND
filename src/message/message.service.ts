@@ -3,7 +3,7 @@ import * as mysql from 'mysql';
 
 @Injectable()
 export class MessageService {
-  private readonly pool = mysql.createPool({
+  public readonly pool = mysql.createPool({
     host: 'localhost',
     user: 'root',
     password: 'root',
